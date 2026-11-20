@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiment 004. Creating digital employees with the help of open source LLMs — Robby Aliasa Akbar</title>
+    <meta name="description" content="Can 5 business functions like customer service, admin, ads, analytics and finance be run with only workflows and open source LLMs. A practical n8n case study.">
+    <link rel="canonical" href="https://robbyaliasa.tech/exp004">
+    <link rel="alternate" hreflang="en" href="https://robbyaliasa.tech/exp004">
+    <link rel="alternate" hreflang="x-default" href="https://robbyaliasa.tech/exp004">
+    <link rel="alternate" hreflang="id" href="https://robbyaliasa.tech/exp004">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://robbyaliasa.tech/sitemap.xml">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Robby Aliasa Akbar">
+    <meta name="theme-color" content="#0C0C0C">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Robby Aliasa Akbar">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://robbyaliasa.tech/exp004">
+    <meta property="og:title" content="Experiment 004. Creating digital employees with the help of open source LLMs — Robby Aliasa Akbar">
+    <meta property="og:description" content="Can 5 business functions like customer service, admin, ads, analytics and finance be run with only workflows and open source LLMs. A practical n8n case study.">
+    <meta property="og:image" content="https://robbyaliasa.tech/images/experiments004/exp004-1.webp">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="500">
+    <meta property="og:image:alt" content="Experiment 004. Creating digital employees with the help of open source LLMs">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="article:published_time" content="2026-09-28">
+    <meta property="article:modified_time" content="2026-10-10">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Experiment 004. Creating digital employees with the help of open source LLMs — Robby Aliasa Akbar">
+    <meta name="twitter:description" content="Can 5 business functions like customer service, admin, ads, analytics and finance be run with only workflows and open source LLMs. A practical n8n case study.">
+    <meta name="twitter:image" content="https://robbyaliasa.tech/images/experiments004/exp004-1.webp">
+    <meta name="twitter:image:alt" content="Experiment 004. Creating digital employees with the help of open source LLMs">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Experiment 004. Creating digital employees with the help of open source LLMs",
+      "description": "Can 5 business functions like customer service, admin, ads, analytics and finance be run with only workflows and open source LLMs. A practical n8n case study.",
+      "image": "https://robbyaliasa.tech/images/experiments004/exp004-1.webp",
+      "url": "https://robbyaliasa.tech/exp004",
+      "datePublished": "2026-09-28",
+      "dateModified": "2026-10-10",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://robbyaliasa.tech/exp004"
+      },
+      "inLanguage": "en-US",
+      "articleSection": "Experiments",
+      "author": {
+        "@type": "Person",
+        "name": "Robby Aliasa Akbar",
+        "url": "https://robbyaliasa.tech/profile",
+        "image": "https://robbyaliasa.tech/images/Profile.webp",
+        "jobTitle": "Applied AI System"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Robby Aliasa Akbar",
+        "url": "https://robbyaliasa.tech/profile",
+        "image": "https://robbyaliasa.tech/images/Profile.webp",
+        "sameAs": [
+          "https://github.com/robbyaliasaakbar",
+          "https://www.linkedin.com/in/robby-aliasa-akbar-001a2a267",
+          "https://www.reddit.com/user/Full_Director87/",
+          "https://www.instagram.com/ybboraa/"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://robbyaliasa.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Experiments",
+          "item": "https://robbyaliasa.tech/experiments-list"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Experiment 004",
+          "item": "https://robbyaliasa.tech/exp004"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why did AI first fail so badly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "AI hallucinated at critical points like cost estimation plus coverage validation plus payment verification and became unpredictable with hundreds of tests failing. Hard to debug."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is deterministic first?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Clean first. Then Qwen 1.5B extracts 1 to 3 keywords at 4 points with temp 0 and top p 0.1. Then JS plus Postgres decides. Only 4 of 266 nodes. One bubble with up to 5 intents split in parallel. Unknown means ask. Never guess."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a beginner build this?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Start small with AI parsing plus reply templates. The full system is 3 workflows with 266 nodes. Not beginner friendly but the keyword first pattern scales. See exp001 and exp002 first. Develop it yourself. Portfolio not tutorial."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can this really handle the work of 9 to 10 people?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In my case it handles the repeat rule based workload with 4 to 5 admin sales operational plus 2 to 3 customer service plus 1 data analyst plus 1 ads specialist plus 1 finance role. Not strategic or creative decisions. Those still need human judgment. Invoicing links exp006."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the more than Rp 50 million saving guaranteed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. It is my own estimation using Bekasi minimum simplified to Rp 5jt times 9 to 10 plus allowances. I run at about 564k with 400k electricity plus about 164k gateway. Your numbers will differ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need expensive hardware to run this every day?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Same Intel Core i5-11400F with 16GB plus 6700XT for Ornith 35B for dev plus Qwen 1.5B for runtime concurrently with exp001 and exp002 learnings. For daily run use auto start plus health checks plus 1 to 2 hours rest plus UPS and backup plus human fallback."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will automating cut demand? What about inputs the system misses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Flat stable means orders and revenue stable with small lift. Same as human run peers. Missed inputs saved to private database for 2 week iteration plus market research plus promos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is payment verified without storing sensitive data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Unique virtual numbers plus QR codes per transaction with 3 minute window. New code if expired. Status check plus webhook. Never screenshot. With Tailscale Funnel. Personal history wiped. Order notes kept. Name withheld. You can swap with licensed gateways. Fee Rp 574 flat per transaction."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is WhatsApp ban risk hidden? What if the system is down?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Unofficial tools can be banned by Meta. Mitigated with isolated funnel plus typing pauses plus throttled randomized broadcast max 20 plus spare numbers. Ollama auto start plus n8n always restart plus scheduled rest plus human fallback. Best practice is official Meta API. Evidence is living and updated every 2 weeks with deeper pages to follow."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H86RYQ2ML8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H86RYQ2ML8');
+    </script>
+    <link rel="icon" type="image/webp" href="/images/logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/main-7bc3xRwE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-CgqSFzYH.css">
+  </head>
+  <body class="bg-paper text-ink font-body antialiased">
+    <div id="root"><h1>Creating digital employees with the help of open source LLMs.</h1></div>
+  
+    <!-- Internal links fallback for crawlers -->
+    <nav id="internal-links-fallback" aria-label="Site navigation" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+      <a href="/">Home</a>
+      <a href="/profile">Profile</a>
+      <a href="/experiments-list">Experiments</a>
+      <a href="/contact">Contact</a>
+      <a href="/exp001">Experiment 001</a>
+      <a href="/exp002">Experiment 002</a>
+      <a href="/exp003">Experiment 003</a>
+      <a href="/exp004">Experiment 004</a>
+      <a href="/exp005">Experiment 005</a>
+      <a href="/exp006">Experiment 006</a>
+      <a href="/exp007">Experiment 007</a>
+      <a href="/exp008">Experiment 008</a>
+      <a href="/exp009">Experiment 009</a>
+      <a href="/exp010">Experiment 010</a>
+      <a href="/exp011">Experiment 011</a>
+      <a href="/exp012">Experiment 012</a>
+      <a href="/exp013">Experiment 013</a>
+      <a href="/exp014">Experiment 014</a>
+      <a href="/exp015">Experiment 015</a>
+      <a href="/exp016">Experiment 016</a>
+      <a href="/exp017">Experiment 017</a>
+    </nav>
+  </body>
+</html>

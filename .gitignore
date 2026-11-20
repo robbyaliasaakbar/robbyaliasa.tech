@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output & logs
+dist/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Internal tools & local notes
+.kilo/
+*.zcodeignore
+chat.md
+COPY-TRACKING.md
+
+# Environment (jangan commit secrets)
+.env
+.env.*
+
+# Database files (SQLite backups)
+*.db
+*.sqlite
+*.sqlite3

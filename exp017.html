@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiment 017 - Four Apps, One Door, Zero Funnel - Tracing Outages and Moving Auth Plus Data to Supabase — Robby Aliasa Akbar</title>
+    <meta name="description" content="Thirteen home server failures traced with receipts, then auth and data of four apps moved to Supabase. Row locks from minute one, live checks, honest tradeoffs, zero VPS bill.">
+    <link rel="canonical" href="https://robbyaliasa.tech/exp017">
+    <link rel="alternate" hreflang="en" href="https://robbyaliasa.tech/exp017">
+    <link rel="alternate" hreflang="x-default" href="https://robbyaliasa.tech/exp017">
+    <link rel="alternate" hreflang="id" href="https://robbyaliasa.tech/exp017">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://robbyaliasa.tech/sitemap.xml">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Robby Aliasa Akbar">
+    <meta name="theme-color" content="#0C0C0C">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Robby Aliasa Akbar">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://robbyaliasa.tech/exp017">
+    <meta property="og:title" content="Experiment 017 - Four Apps, One Door, Zero Funnel - Tracing Outages and Moving Auth Plus Data to Supabase — Robby Aliasa Akbar">
+    <meta property="og:description" content="Thirteen home server failures traced with receipts, then auth and data of four apps moved to Supabase. Row locks from minute one, live checks, honest tradeoffs, zero VPS bill.">
+    <meta property="og:image" content="https://robbyaliasa.tech/images/experiments017/public-blocked.webp">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="500">
+    <meta property="og:image:alt" content="Experiment 017 - Four Apps, One Door, Zero Funnel - Tracing Outages and Moving Auth Plus Data to Supabase">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="article:published_time" content="2026-09-29">
+    <meta property="article:modified_time" content="2026-10-10">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Experiment 017 - Four Apps, One Door, Zero Funnel - Tracing Outages and Moving Auth Plus Data to Supabase — Robby Aliasa Akbar">
+    <meta name="twitter:description" content="Thirteen home server failures traced with receipts, then auth and data of four apps moved to Supabase. Row locks from minute one, live checks, honest tradeoffs, zero VPS bill.">
+    <meta name="twitter:image" content="https://robbyaliasa.tech/images/experiments017/public-blocked.webp">
+    <meta name="twitter:image:alt" content="Experiment 017 - Four Apps, One Door, Zero Funnel - Tracing Outages and Moving Auth Plus Data to Supabase">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Experiment 017 - Four Apps, One Door, Zero Funnel - Tracing Outages and Moving Auth Plus Data to Supabase",
+      "description": "Thirteen home server failures traced with receipts, then auth and data of four apps moved to Supabase. Row locks from minute one, live checks, honest tradeoffs, zero VPS bill.",
+      "image": "https://robbyaliasa.tech/images/experiments017/public-blocked.webp",
+      "url": "https://robbyaliasa.tech/exp017",
+      "datePublished": "2026-09-29",
+      "dateModified": "2026-10-10",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://robbyaliasa.tech/exp017"
+      },
+      "inLanguage": "en-US",
+      "articleSection": "Experiments",
+      "author": {
+        "@type": "Person",
+        "name": "Robby Aliasa Akbar",
+        "url": "https://robbyaliasa.tech/profile",
+        "image": "https://robbyaliasa.tech/images/Profile.webp",
+        "jobTitle": "Applied AI System"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Robby Aliasa Akbar",
+        "url": "https://robbyaliasa.tech/profile",
+        "image": "https://robbyaliasa.tech/images/Profile.webp",
+        "sameAs": [
+          "https://github.com/robbyaliasaakbar",
+          "https://www.linkedin.com/in/robby-aliasa-akbar-001a2a267",
+          "https://www.reddit.com/user/Full_Director87/",
+          "https://www.instagram.com/ybboraa/"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://robbyaliasa.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Experiments",
+          "item": "https://robbyaliasa.tech/experiments-list"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Experiment 017",
+          "item": "https://robbyaliasa.tech/exp017"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this a new login?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, one more time. The three apps now use Supabase Auth, old token keys are retired, you log in once and you are done."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Did my old data move?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Two thousand fifty leads and the app rows came across, counts match, old boxes kept until checks passed."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why Supabase instead of a VPS?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free tier covers it, row locks come built in, and the stack is open source so I can self host later. No monthly bill."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why row locks from minute one?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The stranger sees nothing, a user sees their own rows, an admin sees all. Same rule as my old backend."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why cut over one app at a time?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Each app had to pass live checks before the next one moved. My rollback path stayed open the whole time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why write down every failure?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Thirteen on record so far. The receipts are the proof, and the lessons only count if they are written."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H86RYQ2ML8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H86RYQ2ML8');
+    </script>
+    <link rel="icon" type="image/webp" href="/images/logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/main-7bc3xRwE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-CgqSFzYH.css">
+  </head>
+  <body class="bg-paper text-ink font-body antialiased">
+    <div id="root"><h1>Four Apps, One Door, Zero Funnel — Tracing Outages and Moving Auth Plus Data to Supabase</h1></div>
+  
+    <!-- Internal links fallback for crawlers -->
+    <nav id="internal-links-fallback" aria-label="Site navigation" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+      <a href="/">Home</a>
+      <a href="/profile">Profile</a>
+      <a href="/experiments-list">Experiments</a>
+      <a href="/contact">Contact</a>
+      <a href="/exp001">Experiment 001</a>
+      <a href="/exp002">Experiment 002</a>
+      <a href="/exp003">Experiment 003</a>
+      <a href="/exp004">Experiment 004</a>
+      <a href="/exp005">Experiment 005</a>
+      <a href="/exp006">Experiment 006</a>
+      <a href="/exp007">Experiment 007</a>
+      <a href="/exp008">Experiment 008</a>
+      <a href="/exp009">Experiment 009</a>
+      <a href="/exp010">Experiment 010</a>
+      <a href="/exp011">Experiment 011</a>
+      <a href="/exp012">Experiment 012</a>
+      <a href="/exp013">Experiment 013</a>
+      <a href="/exp014">Experiment 014</a>
+      <a href="/exp015">Experiment 015</a>
+      <a href="/exp016">Experiment 016</a>
+      <a href="/exp017">Experiment 017</a>
+    </nav>
+  </body>
+</html>

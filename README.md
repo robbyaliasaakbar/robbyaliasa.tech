@@ -1,0 +1,229 @@
+# Robby Aliasa Akbar - Applied AI System
+
+Live site: https://robbyaliasa.tech
+
+This repository contains a personal portfolio and applied research site focused on local large language models, automation workflows, agent architecture, and practical tools for real business operations. Every experiment is documented with problem, hypothesis, method, failure log, evidence, and result.
+
+## Live Demo
+
+- Home: https://robbyaliasa.tech
+- Profile: https://robbyaliasa.tech/profile
+- Experiments: https://robbyaliasa.tech/experiments-list
+- Contact: https://robbyaliasa.tech/contact
+- Job Tracker (sub-app): https://robbyaliasaakbar.github.io/jobtracker
+- MiniLeads CRM (sub-app): https://robbyaliasaakbar.github.io/miniLeads
+- CV Screening (sub-app): https://robbyaliasaakbar.github.io/cv_screening
+- ContentOS (sub-app): https://robbyaliasaakbar.github.io/contentOS
+
+## Overview
+
+The site has four core pages and seventeen documented experiments, built as a React 18 multi-page application with Vite and deployed on Hostinger shared hosting with clean URLs via `.htaccess`. Core pages present background, work, and contact. Experiment pages present technical case studies with terminal receipts, screenshots in WebP format, and honest failure analysis. Four experiments link to live web applications that remain hosted separately on GitHub Pages (`robbyaliasaakbar.github.io`). Since EXP 017, three of those apps run their authentication and data on Supabase and work with the home computer off, while CV Screening still uses the home path for auth and n8n scoring. One experiment adds a local MCP translator so an LLM can write into the live tracker without a browser.
+
+The homepage and profile page both use a Neumorphism and Bento Grid design with an EN and ID language toggle. The goal is to test whether artificial intelligence is truly useful in everyday work and to publish full evidence for every claim.
+
+## Tech Stack
+
+Frontend (portfolio):
+- React 18 with Vite 5, multi-page build (21 HTML entries)
+- React Router 7 for SPA navigation between pages
+- Tailwind CSS 3.4 bundled (no CDN)
+- framer-motion and react-parallax-tilt for animations
+- Custom components: InteractiveCta, ScreenshotCarousel, TiltBox, Eyebrow, Button, ScrollToTop, StatusBadge, Chart, Seo, Navbar, Footer
+- Fonts: Plus Jakarta Sans 400-800 (display and body), JetBrains Mono for code blocks
+- Images in WebP format under images per experiment folder
+- Per-page SEO via Seo component (title, meta, OG, JSON-LD, canonical, hreflang)
+- GA4 SPA pageview tracking via GtagTracker component
+- EN and ID language toggle via LanguageContext and translations.js (client side, localStorage), wired for Homepage and Profile pages
+- Source code in src/ and entries/, build output in root
+
+Frontend (sub-apps):
+- React 18 with Vite for MiniLeads, CV Screening, and ContentOS
+- Vanilla JavaScript for Job Tracker
+- Chart.js for MiniLeads and ContentOS analytics and Job Tracker trends
+- PDF.js for in browser CV text extraction
+
+Backend and services:
+- Supabase Auth with email codes for Job Tracker, MiniLeads, and ContentOS since EXP 017, old token keys are retired
+- Supabase Postgres with row level security, own rows or admin, a stranger reads nothing
+- Database functions and 2 Edge Functions for the logic heavy calls, the extract helper answers 401 without a signed token
+- The moved apps kept the old API response shape, so the frontends only swapped the auth layer and the base URL
+- Old containers for the three moved apps are stopped with restart turned off, so they never wake up on reboot
+- Shared authentication backend on port 7002 with PHP 8.3 and SQLite in Docker, alive for CV Screening only, that decision is open
+- CV Screening scoring with n8n on port 5678 using a 24 node rule based workflow, its webhook needs the home PC awake
+- Internal MCP translator on the laptop with Node MCP SDK and 6 tools over stdio, reusing the same auth and data doors with zero new servers
+- Tailscale Funnel for the remaining home services, leftovers still answer on the side and the outage is not closed upstream
+- Supabase free tier covers 500MB database, 50k monthly users, and 2GB egress, zero monthly bill
+- No native PHP install required because the backend runs in one Docker image
+
+Infrastructure:
+- Portfolio static hosting on Hostinger shared hosting, deployed from the main branch via Git Auto-Deploy
+- Clean URLs without .html extensions powered by Apache/LiteSpeed rewrite rules in .htaccess
+- Live sub-apps (Job Tracker, MiniLeads, CV Screening, ContentOS) remain hosted separately on GitHub Pages (`robbyaliasaakbar.github.io`)
+- Authentication and data for three apps run on Supabase, so they work with the home computer off
+- The home computer now only carries the side paths, n8n, WhatsApp, Postgres, and the old auth for CV Screening
+- Home services stay online daily from 08.00 to 21.00 Western Indonesia Time, outside those hours CV Screening login and upload requests fail with a clear status message
+- Funnel leftovers still answer on the side, the outage is not closed upstream
+- Free tier limits apply, hardening is a separate project
+
+## Project Structure
+
+Portfolio (React + Vite, source in src/ and entries/):
+- src/pages/ - Home, Profile, Contact, ExperimentsList, Exp001-017
+- src/components/home/ - Hero, HeroBanner, FeaturedExperiments, CapabilitySection, ApproachSection, ClosingSection, AboutSection, CTASection, Splash
+- src/components/shared/ - InteractiveCta, ScreenshotCarousel, TiltBox, Chart, Seo, Navbar, Footer, Eyebrow, Button, StatusBadge, ScrollToTop
+- src/components/experiment/ - ZoomImage, ScreenshotCarousel, Chart
+- src/context/LanguageContext.jsx - EN and ID language state (localStorage)
+- src/i18n/translations.js - All copy EN and ID per section
+- src/data/experiments.js - Experiment metadata for all 17
+- src/hooks/ - useScrollReveal, usePageTitle
+- src/styles/global.css - Neumorphism utilities, fonts, custom classes
+- src/App.jsx - Routes + GtagTracker (GA4 SPA pageview)
+- src/main.jsx - Entry point with LanguageProvider
+- entries/ - Source HTML entries with SEO meta and GA4 (21 files)
+- public/ - Vite static files (.htaccess, humans.txt, robots.txt, sitemap.xml, images/)
+- vite.config.js - Multi-page build config (21 HTML entries)
+- tailwind.config.js - Palette (ink, paper, accent) and fonts
+- assets/ - Built JS and CSS bundles
+- .htaccess - Apache/LiteSpeed rules for clean URLs, 301 .html redirects, 404, and asset caching
+- index.html, profile.html, contact.html, experiments-list.html - Built HTML entries (served as clean URLs)
+- exp001.html to exp017.html - Built HTML entries with per-page SEO (served as /exp001 to /exp017)
+- 404.html - Custom not found page, not indexed
+- images/ - Logo, portrait, OG banner, and per experiment WebP assets
+
+Sub-apps:
+- Separated from this repository and hosted at `https://robbyaliasaakbar.github.io/` (`jobtracker/`, `miniLeads/`, `cv_screening/`, `contentOS/`).
+
+Static files:
+- robots.txt - Search engine rules
+- sitemap.xml - Full URL and image sitemap
+- humans.txt - Team and site credits
+
+Project docs:
+- README.md - This file. Project overview, stack, and setup.
+- CONTRIBUTING.md - Contribution rules. PR-only workflow, ENGINEERING.md log required.
+- ENGINEERING.md - Changelog. Every PR adds an entry.
+- LICENSE - Apache License 2.0.
+- COPY-TRACKING.md - Copy review file for i18n (delete after final).
+
+## Design System
+
+The homepage and profile page use a Neumorphism and Bento Grid design language:
+- Surface: #F8FAFC (cool white) with soft two-directional shadows
+- Palette: ink #0C0C0C, paper #F8FAFC, accent #D70000
+- Neumorphism utilities: .neu-card, .neu-card-hover, .neu-inset, .neu-pill in global.css
+- Bento Grid: asymmetric tile layouts on desktop, stacked on mobile
+- Hero banner: crumpled paper texture (SVG feTurbulence), logo with 12 drifting tech icons
+- Motion: reveal animations (data-reveal), TiltBox parallax, framer-motion scroll parallax
+- Mobile: infinite carousel with cover-flow scale and snap-proximity in Featured section, hero DOM reordered so name appears before photo
+- Typography: Plus Jakarta Sans 400-800, hero name with uppercase and text stroke
+- Profile page: 8 sections with bento grids (Hero 12-col, Positioning 12-col, Journey zigzag 2-1-1-2, Focus Areas asymmetric, Adaptive Approach dark anchor, Principles zigzag, Value Proposition 3-col, Closing clean light)
+- Decorative quote marks on profile hero quote tile (text-ink, font-extrabold, text-6xl)
+
+## Experiments
+
+| No | Title | Focus | Page |
+|----|-------|-------|------|
+| 001 | The 35B MoE Model on Older Architecture with 12GB VRAM | Local inference feasibility on Intel i5-11400F with RX 6700 XT 12GB on Ubuntu 26.04 with llama.cpp server | /exp001 |
+| 002 | Prefill Speed on Long Context Inference | Prompt processing performance at 250K plus tokens | /exp002 |
+| 003 | Automation Agent Workflow for Business Research | Autonomous research assistant design beyond model selection | /exp003 |
+| 004 | Digital Employees with Open Source LLMs | Five business functions with workflows and open source models | /exp004 |
+| 005 | Full Feature Services Business Website Using Only Local AI | Fourteen page business site with slider, animations, 44 item calculator, and SEO | /exp005 |
+| 006 | Self Contained Invoice System Without a Database | A4 invoice tool with customer database in JavaScript and 44 lines of PHP, 919 lines total | /exp006 |
+| 007 | From 30 Minutes to 5 Seconds for Mass CV Screening | PDF.js to n8n 24 nodes to Postgres with 70 percent threshold | /exp007 |
+| 008 | ROCm gfx1031 versus Vulkan on RX 6700 XT | GFX target fix with 23 percent wall clock gain on 8K context | /exp008 |
+| 009 | Robust Native ROCm gfx1031 Without Override | One line MMA fix with 580 tokens per second prefill sustained at 20K cached context | /exp009 |
+| 010 | Production Ready Job Tracker UI with a 35B Local Coder | Real OTP authentication, CRUD, search, filter, sort, responsive table to cards | /exp010 |
+| 011 | One Authentication Backend for Many Frontends | PHP and SQLite and Docker with six endpoints, Gmail OTP, one hour tokens, CORS and rate limits | /exp011 |
+| 012 | Multi User CRM with Server Side Pagination | React and Vite with 2049 leads, tap to filter charts, CSV import and export, dark mode | /exp012 |
+| 013 | Multi User CV Screening Platform | React and Vite with in browser extraction, seven step pipeline, n8n scoring | /exp013 |
+| 014 | Content Tracking Web App with Server Side Pagination | React and Vite with server pagination, Chart.js tap to filter, shared auth fourth customer, 12 failures documented | /exp014 |
+| 015 | Internal MCP Door for My Own Web App with No Manual Entry | Local MCP translator with 6 tools plus primary opencode agent writing into live ContentOS, 2 failures documented | /exp015 |
+| 016 | From Static Tracker to Enterprise System JobTracker EXP010 Rebuilt on a Home PC Without VPS Bills | React and Express and Postgres and Caddy one door with CI green, 18 failures documented | /exp016 |
+| 017 | Four Apps One Door Zero Funnel, Tracing Outages and Moving Auth and Data to Supabase | Supabase Auth, Postgres, Edge Functions, RLS with 13 failures documented, zero VPS bill | /exp017 |
+
+Each experiment page includes system requirements, screenshots, live demo status, evidence log with terminal receipts, failure log, frontend code essence, FAQ, and disclaimer.
+
+## Live Applications
+
+| App | Frontend | Backend | Ports | Public Access | Token Key |
+|-----|----------|---------|-------|---------------|-----------|
+| Job Tracker | HTML and Tailwind CDN and Vanilla JS in 4 files | Supabase Auth, Postgres, and Edge Functions since EXP 017 | Cloud only | https://robbyaliasaakbar.github.io/jobtracker/ | Supabase session |
+| MiniLeads | React 18 and Vite and Chart.js with custom CSS | Supabase Auth, Postgres, and Edge Functions since EXP 017 | Cloud only | https://robbyaliasaakbar.github.io/miniLeads/ | Supabase session |
+| CV Screening | React 18 and Vite and PDF.js with custom CSS | Shared authentication backend plus n8n workflow with 24 nodes | Local 7008 to 7002 and 5678 | Auth at https://aispec.tail06293c.ts.net and webhook at https://aispec.tail06293c.ts.net:10000/webhook/upload-cv | cv dot token in local storage |
+| ContentOS | React 18 and Vite and Chart.js with custom CSS | Supabase Auth, Postgres, and Edge Functions since EXP 017 | Cloud only | https://robbyaliasaakbar.github.io/contentOS/ | Supabase session |
+
+Notes:
+- Since EXP 017, Job Tracker, MiniLeads, and ContentOS use Supabase Auth with email codes and row level security, so a user reads only their own rows
+- The move kept the old API response shape through database functions and 2 Edge Functions, so the frontends only swapped the auth layer and the base URL
+- Data for 2050 leads, content rows, and lamaran rows moved with counts verified, and the old containers are stopped with restart off
+- CV Screening is the one app still on the home path. Its auth runs on port 7002 and its scoring runs in n8n on port 5678, so uploads need the home computer awake
+- CV Screening scoring is stateless with fresh truncate on every run and downloads in JSON and CSV format
+- The n8n editor is hidden with path restriction. Root returns 404 while webhook returns 200
+- Build URLs are baked at Vite build time from production environment files
+
+## Local Development
+
+Portfolio (React + Vite):
+- `npm install` once in the project root
+- `npm run dev` for local development (port 5173, preview via `/entries/index.html`)
+- `npm run build` for production build (outputs to `dist/`)
+- Copy `dist/entries/*.html`, `dist/assets/`, `dist/.htaccess`, `dist/robots.txt`, `dist/sitemap.xml`, and `dist/humans.txt` to root for deployment
+
+## Deployment
+
+- Build the React app with `npm run build`
+- Replace root HTML files, `assets/`, and root static files (`.htaccess`, `robots.txt`, `sitemap.xml`, `humans.txt`) from `dist/`
+- Push to the `main` branch of `robbyaliasaakbar/robbyaliasa.tech`
+- Hostinger Git Auto-Deploy pulls the built static files directly into `public_html`
+- Clean URLs (`/profile`, `/experiments-list`, `/exp001` to `/exp017`, `/contact`) are served by `.htaccess` rewrite rules
+- The separate sub-apps (`jobtracker`, `miniLeads`, `cv_screening`, `contentOS`) stay hosted on `robbyaliasaakbar.github.io`
+- Authentication and data for Job Tracker, MiniLeads, and ContentOS run on Supabase since EXP 017, so they stay up with the home computer off
+- Remaining home services such as n8n, WhatsApp, Postgres, and the CV Screening auth backend are exposed with Tailscale Funnel
+- Funnel routes still in use: port 443 to Docker port 7002 for CV Screening authentication, and port 10000 with webhook path restriction to port 5678 for n8n
+- If the home computer is off, CV Screening login and upload requests fail with a clear message. This behavior is documented on the page
+
+## SEO and Performance
+
+- Canonical URLs and hreflang for English default and Indonesian alternate
+- Open Graph and Twitter cards with WebP images (OG banner: metadata-banner.webp at 1200x630)
+- JSON-LD for WebSite, Person, Article, BreadcrumbList, FAQPage, CollectionPage, and ContactPage
+- Per-page SEO meta in built HTML entries (crawler reads static HTML, not JS render)
+- SPA pageview tracking via GtagTracker component (fires on every route change)
+- Sitemap at sitemap.xml with image extensions and lastmod dates
+- Robots at robots.txt with allow for public pages and disallow for 404
+- Humans credits at humans.txt
+- Preconnect for Google Fonts and analytics
+- Responsive layout for mobile, tablet, and desktop
+- Semantic HTML with alt text and correct title and meta description on every page
+- Google Analytics 4 with ID G-H86RYQ2ML8
+
+## Security Notes
+
+- No secrets, passwords, OTP codes, tokens, or database content in this repository
+- Environment files with secrets are ignored with .gitignore
+- Node modules are ignored and can be restored with npm install
+- SQLite files and backups with pattern dot db are ignored
+- Authentication uses server side validation, generic error messages, rate limits at 5 per minute per IP, short OTP windows, and forced relogin after password reset
+- CORS uses an explicit allowlist for GitHub Pages and local ports with same host pass for Tailscale
+- The screening webhook is intentionally open with documented threat modeling because it is stateless and returns only the submitted batch result
+
+## Analytics
+
+- Provider: Google Analytics 4
+- Measurement ID: G-H86RYQ2ML8
+- Loaded with gtag dot js on all pages
+- SPA pageview tracking via GtagTracker component (fires on every React Router navigation)
+- Used for basic traffic insight only. No personal data is published in experiment evidence
+
+## Disclaimer
+
+This is an applied research portfolio. Results reflect the listed hardware, model files, and software versions at the time of testing. Build times are real work hours, not benchmark peaks. Backend availability depends on the home computer schedule noted above. The author is self taught and welcomes corrections.
+
+## Contact
+
+- LinkedIn: https://www.linkedin.com/in/robby-aliasa-akbar-001a2a267
+- Reddit: https://www.reddit.com/user/Full_Director87
+- Instagram: https://www.instagram.com/ybboraa
+- Email: ibborarts at gmail dot com
+- WhatsApp: https://wa.me/6282249072873
+- Contact page: https://robbyaliasa.tech/contact

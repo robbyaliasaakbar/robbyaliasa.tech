@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiment 013 - Multi-User CV Screening Platform, React + Vite, Live on GitHub Pages — Robby Aliasa Akbar</title>
+    <meta name="description" content="CV screening platform with shared auth backend: React + Vite, in-browser PDF extraction, 7-step realtime pipeline, n8n scoring, live on GitHub Pages via Tailscale Funnel.">
+    <link rel="canonical" href="https://robbyaliasa.tech/exp013">
+    <link rel="alternate" hreflang="en" href="https://robbyaliasa.tech/exp013">
+    <link rel="alternate" hreflang="x-default" href="https://robbyaliasa.tech/exp013">
+    <link rel="alternate" hreflang="id" href="https://robbyaliasa.tech/exp013">
+    <link rel="sitemap" type="application/xml" title="Sitemap" href="https://robbyaliasa.tech/sitemap.xml">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="Robby Aliasa Akbar">
+    <meta name="theme-color" content="#0C0C0C">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Robby Aliasa Akbar">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:url" content="https://robbyaliasa.tech/exp013">
+    <meta property="og:title" content="Experiment 013 - Multi-User CV Screening Platform, React + Vite, Live on GitHub Pages — Robby Aliasa Akbar">
+    <meta property="og:description" content="CV screening platform with shared auth backend: React + Vite, in-browser PDF extraction, 7-step realtime pipeline, n8n scoring, live on GitHub Pages via Tailscale Funnel.">
+    <meta property="og:image" content="https://robbyaliasa.tech/images/experiments013/homepage-light.webp">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="500">
+    <meta property="og:image:alt" content="Experiment 013 - Multi-User CV Screening Platform, React + Vite, Live on GitHub Pages">
+    <meta property="og:image:type" content="image/webp">
+    <meta property="article:published_time" content="2026-09-28">
+    <meta property="article:modified_time" content="2026-10-10">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Experiment 013 - Multi-User CV Screening Platform, React + Vite, Live on GitHub Pages — Robby Aliasa Akbar">
+    <meta name="twitter:description" content="CV screening platform with shared auth backend: React + Vite, in-browser PDF extraction, 7-step realtime pipeline, n8n scoring, live on GitHub Pages via Tailscale Funnel.">
+    <meta name="twitter:image" content="https://robbyaliasa.tech/images/experiments013/homepage-light.webp">
+    <meta name="twitter:image:alt" content="Experiment 013 - Multi-User CV Screening Platform, React + Vite, Live on GitHub Pages">
+    <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Experiment 013 - Multi-User CV Screening Platform, React + Vite, Live on GitHub Pages",
+      "description": "CV screening platform with shared auth backend: React + Vite, in-browser PDF extraction, 7-step realtime pipeline, n8n scoring, live on GitHub Pages via Tailscale Funnel.",
+      "image": "https://robbyaliasa.tech/images/experiments013/homepage-light.webp",
+      "url": "https://robbyaliasa.tech/exp013",
+      "datePublished": "2026-09-28",
+      "dateModified": "2026-10-10",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://robbyaliasa.tech/exp013"
+      },
+      "inLanguage": "en-US",
+      "articleSection": "Experiments",
+      "author": {
+        "@type": "Person",
+        "name": "Robby Aliasa Akbar",
+        "url": "https://robbyaliasa.tech/profile",
+        "image": "https://robbyaliasa.tech/images/Profile.webp",
+        "jobTitle": "Applied AI System"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Robby Aliasa Akbar",
+        "url": "https://robbyaliasa.tech/profile",
+        "image": "https://robbyaliasa.tech/images/Profile.webp",
+        "sameAs": [
+          "https://github.com/robbyaliasaakbar",
+          "https://www.linkedin.com/in/robby-aliasa-akbar-001a2a267",
+          "https://www.reddit.com/user/Full_Director87/",
+          "https://www.instagram.com/ybboraa/"
+        ]
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://robbyaliasa.tech/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Experiments",
+          "item": "https://robbyaliasa.tech/experiments-list"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Experiment 013",
+          "item": "https://robbyaliasa.tech/exp013"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why does screening require login when the original test did not?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The test proved the engine. The platform proves one account serves many apps. Login ties screenings to people, and the same backend serves all three apps with zero re-code."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do my CVs go? Is anything stored?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Text is extracted in your browser, scored by the workflow, then the result table is wiped fresh every run by design. Downloads (JSON/CSV) are yours to keep. 5 sample CVs, 2780 to 7523 chars each, never leave your browser as files."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is the screening webhook open? Is that not a hole?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Measured decision, documented on-page: stateless endpoint, self-wiping results, near-zero attacker ROI (a spammer only scores their own junk). The n8n editor itself answers 404 on the public door. Hardening scales with threat, not with fear."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Too good to be true? 27 failures says otherwise — which one hurt most?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Exposing the n8n editor to the internet during go-live. Full stop, documented with curl receipts. Also: a workflow edit that never persisted while the tool said saved. Both are on this page with evidence."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why does it fail when your PC is off?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No VPS by decision, home PC and secure tunnels (:443 auth, :10000 screening). Off means doors closed and the page says so instead of pretending. Same honesty as EXP 010/011/012."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why React for the portal but rule-code instead of AI for scoring?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "React earns its place (upload queue, live pipeline view, auth, settings in one state tree). Scoring stays rule-based 50-20-30 so every point is explainable. AI is used where it helps, not where it impresses."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H86RYQ2ML8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-H86RYQ2ML8');
+    </script>
+    <link rel="icon" type="image/webp" href="/images/logo.webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/main-7bc3xRwE.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/main-CgqSFzYH.css">
+  </head>
+  <body class="bg-paper text-ink font-body antialiased">
+    <div id="root"><h1>From Technical Test to Live Multi-User CV Screening Platform on One Shared Auth Backend.</h1></div>
+  
+    <!-- Internal links fallback for crawlers -->
+    <nav id="internal-links-fallback" aria-label="Site navigation" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+      <a href="/">Home</a>
+      <a href="/profile">Profile</a>
+      <a href="/experiments-list">Experiments</a>
+      <a href="/contact">Contact</a>
+      <a href="/exp001">Experiment 001</a>
+      <a href="/exp002">Experiment 002</a>
+      <a href="/exp003">Experiment 003</a>
+      <a href="/exp004">Experiment 004</a>
+      <a href="/exp005">Experiment 005</a>
+      <a href="/exp006">Experiment 006</a>
+      <a href="/exp007">Experiment 007</a>
+      <a href="/exp008">Experiment 008</a>
+      <a href="/exp009">Experiment 009</a>
+      <a href="/exp010">Experiment 010</a>
+      <a href="/exp011">Experiment 011</a>
+      <a href="/exp012">Experiment 012</a>
+      <a href="/exp013">Experiment 013</a>
+      <a href="/exp014">Experiment 014</a>
+      <a href="/exp015">Experiment 015</a>
+      <a href="/exp016">Experiment 016</a>
+      <a href="/exp017">Experiment 017</a>
+    </nav>
+  </body>
+</html>
